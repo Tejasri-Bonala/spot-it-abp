@@ -117,7 +117,7 @@
                     <HBox
                         alignItems="Center"
                         justifyContent="Center"
-                        width="55%"
+                        width="60%"
                     >
                         <MultiComboBox
                             id="idClassificationMultiComboBox"
