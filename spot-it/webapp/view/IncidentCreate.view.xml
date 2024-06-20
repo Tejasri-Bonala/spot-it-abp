@@ -152,7 +152,7 @@
                         <HBox
                             alignItems="Center"
                             justifyContent="Center"
-                            width="55%"
+                            width="43%"
                         >
                             <CheckBox
                                 text="Security"
@@ -164,7 +164,7 @@
                         <HBox
                             alignItems="Center"
                             justifyContent="Center"
-                            width="55%"
+                            width="70%"
                         >
                             <Text
                                 text="If Security is checked, then no other classification can also be checked."
@@ -175,7 +175,7 @@
                         <HBox
                             alignItems="Center"
                             justifyContent="Center"
-                            width="65%"
+                            width="60%"
                             class="checkbox-container"
                         >
                             <CheckBox
