@@ -39,7 +39,7 @@
                         <Image
                             src="./images/spot-it.png"
                             width="100%"
-                            height="150px"
+                            height="200px"
                             densityAware="false"
                             alt="Banner Image"
                         />
@@ -490,6 +490,7 @@ If you would like an email receipt but not to submit your email as part of this 
                     </VBox>
                 </form:SimpleForm>
             </WizardStep>
+            
             <WizardStep
                 id="idSummary"
                 activate="onActivate"

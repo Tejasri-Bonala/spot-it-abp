@@ -204,10 +204,18 @@ function (Controller,MessageToast) {
             var oModel = this.getView().getModel();
             var aFiles = oModel.getProperty("/files");
 
-            // Implement upload logic here (e.g., send files to server)
+            if (aFiles.length === 0) {
+                MessageToast.show("No files selected for upload.");
+                return;
+            }
 
-            // Optionally, clear files from model after upload
-            oModel.setProperty("/files", []);
+            // Simulate file upload and update the list
+            aFiles.forEach(function (fileData) {
+                // Simulate upload process (replace with real upload logic)
+                console.log("Uploading file:", fileData.fileName);
+            });
+
+            MessageToast.show("Files uploaded successfully.");
         },
         onActivate: function () {
             var oModel = this.getView().getModel();
