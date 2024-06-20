@@ -1,0 +1,550 @@
+<mvc:View controllerName="com.abp.spotit.controller.IncidentCreate"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+   <Page class="customBackground">
+        <Panel
+            width="100%"
+            backgroundDesign="Solid"
+            class="panelb"
+        >
+            <content>
+                <VBox
+                    alignItems="Center"
+                    width="100%"
+                >
+                    <!-- First Image -->
+                    <FlexBox
+                        justifyContent="Center"
+                        alignItems="Center"
+                        width="100%"
+                    >
+                        <Image
+                            src="./images/spotit_300.png"
+                            width="100%"
+                            height="200px"
+                            densityAware="false"
+                            alt="Banner Image"
+                        />
+                    </FlexBox>
+
+                    <!-- Second Image -->
+                    <FlexBox
+                        justifyContent="Center"
+                        alignItems="Center"
+                        width="100%"
+                    >
+                        <Image
+                            src="./images/spot-it.png"
+                            width="100%"
+                            height="150px"
+                            densityAware="false"
+                            alt="Banner Image"
+                        />
+                    </FlexBox>
+                </VBox>
+            </content>
+        </Panel>
+
+        <Wizard
+            id="CreateProductWizard"
+            finishButtonText="Submit"
+            showNextButton="false"
+            currentStep="PricingStep"
+            class="sapUiResponsivePadding--header sapUiResponsivePadding--content"
+        >
+            <WizardStep
+                id="ProductTypeStep"
+                title="Category"
+                activate="onActivate"
+            >
+                <!-- Radio Buttons Section -->
+                <VBox width="100%">
+                    <VBox
+                        width="auto"
+                        class="sapUiSmallMarginBottom"
+                    >
+                        <Title
+                            text="Incident Type"
+                            level="H5"
+                        />
+                        <HBox
+                            alignItems="Center"
+                            justifyContent="Center"
+                            width="50%"
+                        >
+                            <SegmentedButton
+                                id="idReportTypeSB"
+                                visible="{device>/system/desktop}"
+                                selectedKey="{/incidentType}"
+                                selectionChange="onSelectionChange"
+                            >
+                                <items>
+                                    <SegmentedButtonItem
+                                        id="idSBIncident"
+                                        text="Incident"
+                                        width="auto"
+                                        key="incident"
+                                    />
+                                    <SegmentedButtonItem
+                                        id="idSBNearMiss"
+                                        text="Near Miss"
+                                        width="auto"
+                                        key="near"
+                                    />
+                                    <SegmentedButtonItem
+                                        id="idSBObservation"
+                                        text="Observation"
+                                        width="auto"
+                                        key="observation"
+                                    />
+                                </items>
+                            </SegmentedButton>
+                        </HBox>
+                    </VBox>
+                </VBox>
+                <!-- Classification Heading -->
+                <VBox
+                    id="classificationVBox"
+                    visible="{= ${/incidentType} === 'observation'}"
+                >
+                    <Title
+                        text="Classification"
+                        level="H5"
+                    />
+                    <HBox
+                        alignItems="Center"
+                        justifyContent="Center"
+                        width="55%"
+                    >
+                        <MultiComboBox
+                            id="idClassificationMultiComboBox"
+                            width="300px"
+                            class="multiInputMargin"
+                            items="{
+        path: 'classification>/data',
+        sorter: { path: 'value' }
+    }"
+                            selectedKeys="{/classification}"
+                        >
+                            <core:Item
+                                key="{classification>key}"
+                                text="{classification>value}"
+                            />
+                        </MultiComboBox>
+                    </HBox>
+                </VBox>
+                <!-- Compliance Function Heading -->
+                <Title
+                    text="Compliance Function"
+                    level="H5"
+                />
+
+                <!-- Checkboxes Section -->
+                <VBox width="100%">
+                    <VBox
+                        width="auto"
+                        class="sapUiSmallMarginBottom"
+                    >
+                        <!-- Security CheckBox and Text -->
+                        <HBox
+                            alignItems="Center"
+                            justifyContent="Center"
+                            width="35%"
+                        >
+                            <CheckBox
+                                text="Security"
+                                selected="{/selectedSecurity}"
+                                id="Security"
+                                select="onSecuritySelect"
+                            />
+                        </HBox>
+                        <HBox
+                            alignItems="Center"
+                            justifyContent="Center"
+                            width="40%"
+                            class="sec"
+                        >
+                            <Text
+                                text="If Security is checked, then no other classification can also be checked."
+                            />
+                        </HBox>
+
+                        <!-- Environment, Healthy & Safety, Marine CheckBoxes -->
+                        <HBox
+                            alignItems="Center"
+                            justifyContent="Center"
+                            width="57%"
+                        >
+                            <CheckBox
+                                text="Environment"
+                                selected="{/selectedEnvironment}"
+                                id="Environment"
+                                select="onClassificationSelect"
+                            />
+                            <CheckBox
+                                text="Healthy &amp; Safety"
+                                selected="{/selectedHealthy}"
+                                id="Healthy"
+                                select="onClassificationSelect"
+                            />
+                            <CheckBox
+                                text="Marine"
+                                selected="{/selectedMarine}"
+                                id="Marine"
+                                select="onClassificationSelect"
+                            />
+                        </HBox>
+                    </VBox>
+                </VBox>
+            </WizardStep>
+
+            <WizardStep
+                id="ProductInfoStep"
+                title="Location Details"
+                activate="onActivate"
+            >
+                <form:SimpleForm
+                    editable="true"
+                    layout="ResponsiveGridLayout"
+                >
+                    <Label text="Port" />
+                    <Select
+                        id="ProductName"
+                        change="validateProdInfoStep"
+                        valueStateText="Select Port Location"
+                        width="300px"
+                        selectedKey="{/port}"
+                    >
+                        <core:Item
+                            key="Select Port Location"
+                            text="Select Port Location"
+                        />
+                        <core:Item
+                            key="UKD"
+                            text="UKD"
+                        />
+                        <core:Item
+                            key="AYR"
+                            text="AYR"
+                        />
+                    </Select>
+
+                    <Label text="Location description" />
+                    <Input
+                        value="{/location}"
+                        width="300px"
+                    />
+                    <!-- <core:HTML
+                                id="w3wMap"
+                                content=""
+                            /> -->
+                    <Label text="Description of events" />
+
+                    <IconTabBar
+                        id="idIconTabBarNoIcons"
+                        expanded="{device>/isNoPhone}"
+                        class="sapUiResponsiveContentPadding"
+                    >
+                        <items>
+                            <IconTabFilter
+                                text="what3words"
+                                key="what3words"
+                            >
+                                <content>
+                                    <Input
+                                        id="w3wInput"
+                                        value="{/what3words}"
+                                    />
+                                    <HBox alignItems="Center">
+                                        <Text text="Use " />
+                                        <Link
+                                            text="what3words"
+                                            press="onWhat3WordsLinkPress"
+                                            class="sapUiSmallMarginStart"
+                                        />
+                                        <Text
+                                            text=" to get the w3w address"
+                                            class="sapUiSmallMarginStart"
+                                        />
+                                    </HBox>
+                                    <Button
+                                        text="Hide Map"
+                                        press="onHideMapPress"
+                                        visible="{= ${/mapVisible} }"
+                                    />
+                                </content>
+                                <core:HTML
+                                    id="w3wMap"
+                                    content=""
+                                />
+                            </IconTabFilter>
+
+                            <IconTabFilter
+                                text="Lat/Long"
+                                key="Lat"
+                            >
+                                <VBox>
+                                    <Text text="WGS84" />
+
+                                    <HBox>
+                                        <Input value="{/latitude}" />
+                                        <Input value="{/longitude}" />
+                                        <Input value="{/long}" />
+                                        <Select
+                                            id="loc"
+                                            change="validateProdInfoStep"
+                                            valueStateText="Select Location"
+                                            selectedKey="{/direction1}"
+                                        >
+                                            <core:Item
+                                                key="north"
+                                                text="North"
+                                            />
+                                            <core:Item
+                                                key="south"
+                                                text="South"
+                                            />
+                                        </Select>
+                                    </HBox>
+                                    <HBox>
+                                        <Input value="{/latitude2}" />
+                                        <Input value="{/longitude2}" />
+                                        <Input value="{/long2}" />
+                                        <Select
+                                            id="loc1"
+                                            change="validateProdInfoStep"
+                                            valueStateText="Select Location"
+                                            selectedKey="{/direction2}"
+                                        >
+                                            <core:Item
+                                                key="east"
+                                                text="East"
+                                            />
+                                            <core:Item
+                                                key="west"
+                                                text="West"
+                                            />
+                                        </Select>
+                                    </HBox>
+                                </VBox>
+                            </IconTabFilter>
+
+                            <IconTabFilter
+                                text="Lat/Long (decimal)"
+                                key="Long"
+                            >
+                                <VBox>
+                                    <Text text="Latitude, Longitude" />
+                                    <Input value="{/decimalLong}" />
+                                    <HBox>
+                                        <Text text="Use " />
+                                        <Link
+                                            text="Google Maps"
+                                            href="https://www.google.com/maps/"
+                                            target="_blank"
+                                            class="sapUiSmallMarginStart"
+                                        />
+                                        <Text
+                                            text=" to get the decimal Lat/Long."
+                                            class="sapUiSmallMarginStart"
+                                        />
+                                    </HBox>
+                                </VBox>
+                            </IconTabFilter>
+                        </items>
+                    </IconTabBar>
+                </form:SimpleForm>
+            </WizardStep>
+
+            <WizardStep
+                id="EventDetails"
+                title="Event Details"
+                activate="onActivate"
+            >
+                <form:SimpleForm
+                    editable="true"
+                    layout="ResponsiveGridLayout"
+                >
+                    <Label text="Title" />
+                    <VBox>
+                        <HBox>
+                            <Text
+                                text="Use appropriate language. Remember, everything you write could potentially be releasable, including directly to the individual/s mentioned in this Spot-It."
+                            />
+                        </HBox>
+                        <Input
+                            value="{/title}"
+                            width="300px"
+                        />
+                    </VBox>
+                    <Label text="Date/time event occurred" />
+                    <DateTimePicker
+                        value="{/dateTime}"
+                        width="300px"
+                    />
+                    <Label text="Description of events" />
+                    <TextArea
+                        value="{/description}"
+                        rows="8"
+                        width="300px"
+                    />
+
+                    <Label
+                        text="What action did you take? If none, what action could be taken? (optional)"
+                    />
+                    <TextArea
+                        value="{/action}"
+                        rows="8"
+                        width="300px"
+                    />
+                </form:SimpleForm>
+            </WizardStep>
+
+            <WizardStep
+                id="OptionalInfoStep"
+                title="Attachments"
+                activate="onActivate"
+            >
+                <Text
+                    text="Upload photos of the situation. Click 'Browse' to find photos on your computer and then click 'Upload' to attach. Each photo can be a maximum of 8MB."
+                />
+                <form:SimpleForm
+                    editable="true"
+                    layout="ResponsiveGridLayout"
+                >
+                    <Label text="Cover photo" />
+                    <u:FileUploader
+                        id="fileUploader"
+                        width="300px"
+                        tooltip="Upload product cover photo to the local server"
+                        style="Emphasized"
+                        placeholder="Choose a file for Upload..."
+                        multiple="true"
+                        change="onFileUploaderChange"
+                    />
+                </form:SimpleForm>
+
+                <List
+                    id="fileList"
+                    items="{/files}"
+                >
+                    <CustomListItem>
+                        <HBox alignItems="Center">
+                            <StandardListItem title="{fileName}" />
+                            <Button
+                                icon="sap-icon://decline"
+                                type="Transparent"
+                                press="onDeleteItem"
+                            />
+                        </HBox>
+                    </CustomListItem>
+                </List>
+
+                <Button
+                    id="uploadButton"
+                    text="Upload"
+                    press="onUpload"
+                    visible="{= ${/files}.length > 0 }"
+                />
+            </WizardStep>
+
+            <WizardStep
+                id="PricingStep"
+                title="Your Details"
+                activate="onActivate"
+            >
+                <form:SimpleForm
+                    editable="true"
+                    layout="ResponsiveGridLayout"
+                >
+                    <Label text="Name (optional)" />
+                    <Input
+                        value="{/name}"
+                        width="300px"
+                    />
+                    <Label text="Your Telephone (optional)" />
+                    <Input
+                        value="{/telephone}"
+                        width="300px"
+                    />
+                    <Label text="Your Email(optional)" />
+                    <VBox>
+                        <HBox>
+                            <CheckBox
+                                text="Receipt only"
+                                id="email"
+                                selected="{/receiptOnly}"
+                            />
+                        </HBox>
+                        <Input
+                            value="{/email}"
+                            width="300px"
+                        />
+                        <Text
+                            text="You do not have to give your name/telephone/email, but if you do we will be able to provide you with any feedback.
+If you would like an email receipt but not to submit your email as part of this report, you can do this by selecting 'Receipt only'."
+                        />
+                    </VBox>
+                </form:SimpleForm>
+            </WizardStep>
+            <WizardStep
+                id="idSummary"
+                activate="onActivate"
+                title="Summary"
+            >
+             
+
+                <form:SimpleForm>
+                    <Label text="Category" />
+                    <Text text="{/incidentType}" />
+                    <Label text="Classification" />
+                    <Text text="{/classification}" />
+
+                    <Label text="Compliance" />
+                    <Text
+                        text="{
+                            path: '/',
+                            formatter: '.complianceFormatter',
+                            parts: [
+                                '/selectedSecurity',
+                                '/selectedEnvironment',
+                                '/selectedHealthy',
+                                '/selectedMarine'
+                            ]
+                        }"
+                    />
+
+                    <Label text="Port" />
+                    <Text text="{/port}" />
+                    <Label text="Location" />
+                    <Text text="{/location}" />
+
+                    <Label text="Title" />
+                    <Text text="{/title}" />
+
+                    <Label text="Date and Time" />
+                    <Text text="{/dateTime}" />
+
+                    <Label text="Description" />
+                    <Text text="{/description}" />
+
+                    <Label text="What action did you take?" />
+                    <Text text="{/action}" />
+                    <Label text="Attachments" />
+                    <Text text="{/action}" />
+                </form:SimpleForm>
+                <Button
+                    id="submitButton"
+                    text="Submit"
+                    press="onSubmit"
+                  
+                />
+            </WizardStep>
+            
+        </Wizard>
+       
+    </Page>
+</mvc:View>

@@ -1,0 +1,108 @@
+{
+    "data" : [
+        {
+            "key": "12fee133-7817-42cf-b472-ab96b530b699",
+            "value": "Behavioural Safety"
+        },
+        {
+            "key": "65859e2f-c285-4a87-a078-c255ec8ac304",
+            "value": "Best Practice"
+        },
+        {
+            "key": "b115e5d4-5af3-4a1e-b804-79c9ab5581fc",
+            "value": "Biodiversity"
+        },
+        {
+            "key": "58edd85f-5a60-460a-aaf5-952b2d5a99f2",
+            "value": "Documented Procedure Not Followed"
+        },
+        {
+            "key": "a2010f57-91f3-4944-9f0c-d73b6a30dbc2",
+            "value": "Equipment Damage/Defect"
+        },
+        {
+            "key": "0598dcb5-a1e2-4ef7-bc6d-46a51edb13e3",
+            "value": "Failure To Use Personal Protective Equipment"
+        },
+        {
+            "key": "5b4f55e9-c4ed-40ca-bec1-8c2f418651d3",
+            "value": "Horseplay"
+        },
+        {
+            "key": "e8ddff29-4450-40f9-b7df-67aa5cdc14dc",
+            "value": "Housekeeping"
+        },
+        {
+            "key": "a5d2b38a-0bbf-4947-9895-541920dbdd59",
+            "value": "Improvement Opportunity"
+        },
+        {
+            "key": "81a70339-6a57-403b-bfa5-53bdd5b387a5",
+            "value": "Invasive Species"
+        },
+        {
+            "key": "150fd9c3-85fd-4595-8f2d-7f968c6639ab",
+            "value": "Noise Management"
+        },
+        {
+            "key": "e94a094d-4834-40f4-b297-68182a6553b0",
+            "value": "Other Violation"
+        },
+        {
+            "key": "40181b6b-9fec-4365-89f3-4353e58aa4ac",
+            "value": "Potentially Dangerous Situation"
+        },
+        {
+            "key": "b74f0398-164b-400e-9be6-f62b2af0ffe1",
+            "value": "Safety Conversation"
+        },
+        {
+            "key": "f77b2fbd-3ef2-4cc6-a0a1-234bed27069e",
+            "value": "Security Observation"
+        },
+        {
+            "key": "566c947b-3ea2-428f-9de7-efc6df21a28b",
+            "value": "Safety Hazard"
+        },
+        {
+            "key": "b1932bee-be72-47cf-9505-2592d2152893",
+            "value": "Suggestion"
+        },
+        {
+            "key": "272dc095-ad9b-48c9-b8c1-43819980e7a1",
+            "value": "Suspicous Activity"
+        },
+        {
+            "key": "e6d72764-5eff-4a8c-81c6-d403c7dca8b7",
+            "value": "Unsafe Lifting or Carrying"
+        },
+        {
+            "key": "faae6777-1b15-4b24-af89-6e363855a597",
+            "value": "Unsafe Use of Equipment, Tool or Vehicle"
+        },
+        {
+            "key": "f6a39268-47e2-4dd8-820b-de28d614074d",
+            "value": "Unsafe Use of Material"
+        },
+        {
+            "key": "79185f7b-50c7-4f8d-8c59-4a7151572885",
+            "value": "Use of Defective Equipment, Tool or Vehicle"
+        },
+        {
+            "key": "1658e691-ff21-4d47-8d65-6b4bade582ec",
+            "value": "Use of Defective Material"
+        },
+        {
+            "key": "915122d6-e9cc-4933-a998-ddc11d5ba59a",
+            "value": "Workplace Inspections (SSP & Wales Only)"
+        },
+        {
+            "key": "590daa7c-10a1-473a-898e-64add17339ac",
+            "value": "Waste Management"
+        },
+        {
+            "key": "d9159657-b9d4-4541-aa9b-96abceeae477",
+            "value": "Waste Resources"
+        }
+    ]    
+}

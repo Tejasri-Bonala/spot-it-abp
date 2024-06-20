@@ -1,0 +1,133 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "com.abp.spotit",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "dataSources": {
+      
+			"classificationData" : {
+				"uri": "model/data/Classification.json",
+				"type": "JSON"
+			}
+    },
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.13.6",
+      "toolsId": "7d9505a0-62ab-4fb6-9452-355a58795a14"
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "incident-manage": {
+          "semanticObject": "incident",
+          "action": "manage",
+          "title": "{{flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.125.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.abp.spotit.i18n.i18n"
+        }
+      },
+      "classification": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "classificationData"
+			}
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "com.abp.spotit.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "RouteIncidentCreate",
+          "pattern": ":?query:",
+          "target": [
+            "TargetIncidentCreate"
+          ]
+        }
+      ],
+      "targets": {
+        "TargetIncidentCreate": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "IncidentCreate",
+          "viewName": "IncidentCreate"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "com.abp.spotit.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "abp_ui"
+  }
+}

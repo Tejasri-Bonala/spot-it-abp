@@ -1,0 +1,31 @@
+/* Enter your custom styles here */
+
+.sapUiSmallMarginStart {
+    margin-left: 8px; /* Adjust the spacing as required */
+}
+.sec{
+    margin-left:13.5%;
+}
+
+
+
+
+/* .customBackground {
+    background-color: rgb(17, 50, 116) !important; 
+   color:#fff;
+    
+} */
+
+/* .sapMWizard.sapMWizardBgStandard .sapMWizardStepContainer {
+    background-color: rgb(17, 50, 116);
+}
+
+.sapMWizardProgressNav {
+    height: 4rem;
+    padding: 1rem 1rem 0 1rem;
+    user-select: none;
+    background: rgb(17, 50, 116);
+    border: none;
+    font-size: .875rem;
+    border: 1rem #fff;
+} */
