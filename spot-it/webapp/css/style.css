@@ -7,7 +7,40 @@
     margin-left:13.5%;
 }
 
+.sapMPanelContent:not(.sapMPanelBGTransparent) {
+    border-bottom: .0625rem solid #fff;
+}
 
+.sapMPanelBGSolid {
+    background-color: #ffffff;
+}
+.sapMIBar.sapMHeader-CTX {
+    color: #fff;
+    background-color: #fff;
+    filter: none;
+    background-image: none;
+}
+.checkbox-container {
+    display: flex;
+    flex-wrap: wrap; /* This allows wrapping on smaller screens */
+    justify-content: center;
+    align-items: center;
+}
+
+/* For larger screens (e.g., tablets and desktops) */
+@media (min-width: 600px) {
+    .checkbox-container {
+        flex-direction: row; /* Horizontal layout */
+    }
+}
+
+/* For smaller screens (e.g., phones) */
+@media (max-width: 599px) {
+    .checkbox-container {
+        flex-direction: column; /* Vertical layout */
+        align-items: flex-start; /* Align to the start for better appearance */
+    }
+}
 
 
 /* .customBackground {

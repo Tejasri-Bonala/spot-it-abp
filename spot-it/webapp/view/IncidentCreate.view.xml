@@ -22,7 +22,7 @@
                         width="100%"
                     >
                         <Image
-                            src="./images/spotit_300.png"
+                            src="/images/spotit_300.png"
                             width="100%"
                             height="200px"
                             densityAware="false"
@@ -37,7 +37,7 @@
                         width="100%"
                     >
                         <Image
-                            src="./images/spot-it.png"
+                            src="/images/spot-it.png"
                             width="100%"
                             height="150px"
                             densityAware="false"
@@ -51,7 +51,7 @@
         <Wizard
             id="CreateProductWizard"
             finishButtonText="Submit"
-            showNextButton="false"
+            showNextButton="true"
             currentStep="PricingStep"
             class="sapUiResponsivePadding--header sapUiResponsivePadding--content"
         >
@@ -73,7 +73,7 @@
                         <HBox
                             alignItems="Center"
                             justifyContent="Center"
-                            width="50%"
+                            width="55%"
                         >
                             <SegmentedButton
                                 id="idReportTypeSB"
@@ -152,7 +152,7 @@
                         <HBox
                             alignItems="Center"
                             justifyContent="Center"
-                            width="35%"
+                            width="55%"
                         >
                             <CheckBox
                                 text="Security"
@@ -164,8 +164,7 @@
                         <HBox
                             alignItems="Center"
                             justifyContent="Center"
-                            width="40%"
-                            class="sec"
+                            width="55%"
                         >
                             <Text
                                 text="If Security is checked, then no other classification can also be checked."
@@ -176,7 +175,8 @@
                         <HBox
                             alignItems="Center"
                             justifyContent="Center"
-                            width="57%"
+                            width="65%"
+                            class="checkbox-container"
                         >
                             <CheckBox
                                 text="Environment"
