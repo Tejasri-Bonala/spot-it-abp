@@ -97,21 +97,38 @@ function (Controller,MessageToast) {
         },
 
 
-
-
         // onFileUploaderChange: function (oEvent) {
-        //    var aFiles = oEvent.getParameter("files");
-        //      var oModel = this.getView().getModel(); 
+        //     // Get the files from the event
+        //     var aFiles = oEvent.getParameter("files");
+        //     var oModel = this.getView().getModel();
 
-        //    // Get the current files list from the model
+        //     // Get the current files list from the model
         //     var aCurrentFiles = oModel.getProperty("/files") || [];
 
         //     // Prepare new files array to append
         //     var aNewFiles = [];
         //     for (var i = 0; i < aFiles.length; i++) {
-        //         aNewFiles.push({
-        //             fileName: aFiles[i].name
-        //          });
+        //         var oFile = aFiles[i];
+
+        //         // Check for valid file type (jpg or jpeg)
+        //         if (this._isValidFileType(oFile)) {
+        //             // Check if the file is already in the list
+        //             var bFileExists = aCurrentFiles.some(function (oCurrentFile) {
+        //                 return oCurrentFile.fileName === oFile.name;
+        //             });
+
+        //             if (!bFileExists) {
+        //                 aNewFiles.push({
+        //                     fileName: oFile.name
+        //                 });
+        //             } else {
+        //                 // Optional: Display a message if the file already exists
+        //                 sap.m.MessageToast.show("File '" + oFile.name + "' is already added.");
+        //             }
+        //         } else {
+        //             // Display a message if the file type is not valid
+        //             sap.m.MessageToast.show("Only JPG/JPEG files are allowed.");
+        //         }
         //     }
 
         //     // Concatenate the current files with the new files
@@ -122,59 +139,82 @@ function (Controller,MessageToast) {
 
         //     // Clear the FileUploader field if needed (optional)
         //     var oFileUploader = this.byId("fileUploader");
-        //     oFileUploader.clear(); 
+        //     oFileUploader.clear();
         // },
 
-        onFileUploaderChange: function (oEvent) {
+        // _isValidFileType: function (oFile) {
+        //     // Check if the file type is either jpeg or jpg
+        //     var sFileType = oFile.type.toLowerCase();
+        //     return sFileType === "image/jpeg" || sFileType === "image/jpg";
+        // },
+        onFileUploaderChange: function(oEvent) {
             // Get the files from the event
             var aFiles = oEvent.getParameter("files");
             var oModel = this.getView().getModel();
-
+        
             // Get the current files list from the model
             var aCurrentFiles = oModel.getProperty("/files") || [];
-
+        
             // Prepare new files array to append
             var aNewFiles = [];
             for (var i = 0; i < aFiles.length; i++) {
                 var oFile = aFiles[i];
-
+        
                 // Check for valid file type (jpg or jpeg)
                 if (this._isValidFileType(oFile)) {
-                    // Check if the file is already in the list
-                    var bFileExists = aCurrentFiles.some(function (oCurrentFile) {
-                        return oCurrentFile.fileName === oFile.name;
-                    });
-
-                    if (!bFileExists) {
-                        aNewFiles.push({
-                            fileName: oFile.name
+                    // Check if the file size is within the allowed limit (8MB)
+                    if (this._isFileSizeValid(oFile)) {
+                        // Check if the file is already in the list
+                        var bFileExists = aCurrentFiles.some(function (oCurrentFile) {
+                            return oCurrentFile.fileName === oFile.name;
                         });
+        
+                        if (!bFileExists) {
+                            // Generate preview URL for the image
+                            var sPreviewUrl = URL.createObjectURL(oFile);
+        
+                            // Add file to the model
+                            aNewFiles.push({
+                                fileName: oFile.name,
+                                previewUrl: sPreviewUrl,
+                                file: oFile // Optionally store the entire file object
+                            });
+                        } else {
+                            // Optional: Display a message if the file already exists
+                            sap.m.MessageToast.show("File '" + oFile.name + "' is already added.");
+                        }
                     } else {
-                        // Optional: Display a message if the file already exists
-                        sap.m.MessageToast.show("File '" + oFile.name + "' is already added.");
+                        // Display a message if the file size exceeds the limit
+                        sap.m.MessageToast.show("File '" + oFile.name + "' exceeds the 8MB size limit.");
                     }
                 } else {
                     // Display a message if the file type is not valid
                     sap.m.MessageToast.show("Only JPG/JPEG files are allowed.");
                 }
             }
-
+        
             // Concatenate the current files with the new files
             var aAllFiles = aCurrentFiles.concat(aNewFiles);
-
+        
             // Update the model with the combined files list
             oModel.setProperty("/files", aAllFiles);
-
+        
             // Clear the FileUploader field if needed (optional)
             var oFileUploader = this.byId("fileUploader");
             oFileUploader.clear();
         },
-
+        
         _isValidFileType: function (oFile) {
             // Check if the file type is either jpeg or jpg
             var sFileType = oFile.type.toLowerCase();
             return sFileType === "image/jpeg" || sFileType === "image/jpg";
         },
+        
+        _isFileSizeValid: function (oFile) {
+            // Check if the file size is less than or equal to 8MB (8 * 1024 * 1024 bytes)
+            return oFile.size <= 8 * 1024 * 1024;
+        },
+        
 
         onDeleteItem: function (oEvent) {
             // Get the list item context and model

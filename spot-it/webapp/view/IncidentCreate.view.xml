@@ -427,7 +427,7 @@
                     />
                 </form:SimpleForm>
 
-                <List
+                <!-- <List
                     id="fileList"
                     items="{/files}"
                 >
@@ -439,6 +439,15 @@
                                 type="Transparent"
                                 press="onDeleteItem"
                             />
+                        </HBox>
+                    </CustomListItem>
+                </List> -->
+                <List id="fileList" items="{/files}">
+                    <CustomListItem>
+                        <HBox alignItems="Center">
+                            <Image src="{previewUrl}" width="150px" height="150px" alt="{fileName}" densityAware="false" />
+                            <StandardListItem title="{fileName}" />
+                            <Button icon="sap-icon://decline" type="Transparent" press="onDeleteItem" />
                         </HBox>
                     </CustomListItem>
                 </List>
@@ -534,8 +543,13 @@ If you would like an email receipt but not to submit your email as part of this 
 
                     <Label text="What action did you take?" />
                     <Text text="{/action}" />
-                    <Label text="Attachments" />
-                    <Text text="{/action}" />
+                   <Label text="Attachments" />
+        <VBox items="{/files}">
+            <items>
+                 
+                            <Image src="{previewUrl}" width="150px" height="150px" alt="{fileName}" densityAware="false" />
+                        </items>
+        </VBox>
                 </form:SimpleForm>
                 <Button
                     id="submitButton"
