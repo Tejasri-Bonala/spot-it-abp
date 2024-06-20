@@ -8,15 +8,15 @@
 }
 
 .sapMPanelContent:not(.sapMPanelBGTransparent) {
-    border-bottom: .0625rem solid #fff;
+    border-bottom: .0625rem solid #1C2228;
 }
 
 .sapMPanelBGSolid {
-    background-color: #ffffff;
-}
+    background-color: #1C2228
+} 
 .sapMIBar.sapMHeader-CTX {
-    color: #fff;
-    background-color: #fff;
+    color: #1C2228;
+    background-color: #1C2228;
     filter: none;
     background-image: none;
 }
