@@ -22,7 +22,7 @@
                         width="100%"
                     >
                         <Image
-                            src="/images/spotit_300.png"
+                            src="./images/spotit_300.png"
                             width="100%"
                             height="200px"
                             densityAware="false"
@@ -37,7 +37,7 @@
                         width="100%"
                     >
                         <Image
-                            src="/images/spot-it.png"
+                            src="./images/spot-it.png"
                             width="100%"
                             height="150px"
                             densityAware="false"
