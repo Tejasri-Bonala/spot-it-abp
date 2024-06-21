@@ -3,10 +3,11 @@
   "authenticationMethod": "route",
   "routes": [
     {
-      "source": "^/CloudIntegration_NEO/(.*)$",
-      "target": "/CloudIntegration_NEO/$1",
-      "authenticationType": "none",
-      "destination": "CloudIntegration_NEO"
+      "source": "^/cxf/(.*)$",
+      "target": "/cxf/$1",
+      "destination": "CloudIntegration_NEO",
+      "authenticationType": "xsuaa",
+      "csrfProtection": false
     },
     {
       "source": "^/resources/(.*)$",

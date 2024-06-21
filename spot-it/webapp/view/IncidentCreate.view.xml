@@ -338,7 +338,8 @@
                             >
                                 <VBox>
                                     <Text text="Latitude, Longitude" />
-                                    <Input value="{/decimalLong}" />
+                                     <Input value="{/decimalLat}" />
+                                    <Input value="{/decimalLong}" />   
                                     <HBox>
                                         <Text text="Use " />
                                         <Link
@@ -541,14 +542,28 @@ If you would like an email receipt but not to submit your email as part of this 
                     <Label text="Description" />
                     <Text text="{/description}" />
 
+                    <Label text="Latitude"/>
+                    <Text text="{/decimalLat}"/>
+
+                    <Label text="Longitude"/>
+                    <Text text="{/decimalLong}"/>
+
                     <Label text="What action did you take?" />
                     <Text text="{/action}" />
-                   <Label text="Attachments" />
+                     <Label text="Name" />
+                    <Text text="{/name}" />
+                     <Label text="Telephone" />
+                    <Text text="{/telephone}" />
+                     <Label text="Email" />
+                    <Text text="{/email}" />
+                    <Label text="Attachments" />
         <VBox items="{/files}">
             <items>
-                 
-                            <Image src="{previewUrl}" width="150px" height="150px" alt="{fileName}" densityAware="false" />
-                        </items>
+                <HBox alignItems="Center">
+                    <Image src="{previewUrl}" width="150px" height="150px" alt="{fileName}" densityAware="false" />
+                    <Text text="{fileName}" />
+                </HBox>
+            </items>
         </VBox>
                 </form:SimpleForm>
                 <Button
