@@ -422,23 +422,27 @@ function (Controller,MessageBox) {
                 url: this.getBaseURL() + "/cxf/INC_CREATE1",
                 method: "POST",
                 data: sPayload,
-                Accept: "*/*",
                 contentType: "text/xml",
                 success: function (data) {
-                    console.log(data);
-        
-                    // Convert response to XML document
-                    var xmlDoc = $.parseXML(data);
-                    var $xml = $(xmlDoc);
-        
-                    // Extract incident number
-                    var incidentNumber = $xml.find("EV_INCIDENT_NUMBER").text();
-                    console.log("Extracted Incident Number:", incidentNumber);
-        
-                    if (incidentNumber) {
-                        MessageBox.success("Incident Number: " + incidentNumber);
-                    } else {
-                        MessageBox.error("Incident number not found in the response.");
+                    console.log("SOAP Response:", data); // Log the entire SOAP response
+            
+                    try {
+                        // Convert response to XML document
+                        // var xmlDoc = $.parseXML(data);
+                        // var $xml = $(xmlDoc);
+            
+                        // // Extract incident number using namespace-aware find
+                        // var incidentNumber = $xml.find("EV_INCIDENT_NUMBER").text().trim();
+                        // console.log("Extracted Incident Number:", incidentNumber);
+            
+                        var incidentNumber = data.all[3].children[1].innerHTML
+                        if (incidentNumber) {
+                            MessageBox.success("Incident Number: " + incidentNumber);
+                        } else {
+                            MessageBox.error("Incident number not found in the response.");
+                        }
+                    } catch (error) {
+                        MessageBox.error("Error parsing XML or extracting data: " + error.message);
                     }
                 }.bind(this),
                 error: function (oError) {
@@ -447,6 +451,9 @@ function (Controller,MessageBox) {
                     MessageBox.error("Error in the request: " + errorText);
                 },
             });
+            
+            
+            
         },
         getBaseURL: function () {
             return sap.ui.require.toUrl("com/abp/spotit");
