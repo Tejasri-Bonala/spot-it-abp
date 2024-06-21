@@ -404,7 +404,7 @@ function (Controller,MessageBox) {
                     '<ZCTCFM_INC_CREATE xmlns="urn:sap-com:document:sap:rfc:functions" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">' +
                             `<IV_CMP_FUNC_SE>X</IV_CMP_FUNC_SE>` +
                             `<IV_DESCRIPTION>${description}</IV_DESCRIPTION>` +
-                            `<IV_IMA_DESC_TEXT>${description}</IV_IMA_DESC_TEXT>` +
+                            `<IV_IMA_DESC_TEXT>${action}</IV_IMA_DESC_TEXT>` +
                             `<IV_INC_START_DATE>${formattedDateTime}</IV_INC_START_DATE>` +
                             `<IV_INC_TYPE>X</IV_INC_TYPE>` +
                             `<IV_LATITUDE>${decimalLat}</IV_LATITUDE>` +
