@@ -353,7 +353,7 @@ function (Controller,MessageBox) {
             var oModel = this.getView().getModel();
             
             // Collect form data
-            var incidentType = oModel.getProperty("/incidentType") || ""; // Ensure it's not null or empty
+            var incidentType = oModel.getProperty("/incidentType") || ""; 
             var classification = oModel.getProperty("/classification") || "";
             var compliance = this.complianceFormatter(
                 oModel.getProperty("/selectedSecurity"),
@@ -424,7 +424,7 @@ function (Controller,MessageBox) {
                 data: sPayload,
                 contentType: "text/xml",
                 success: function (data) {
-                    console.log("SOAP Response:", data); // Log the entire SOAP response
+                    console.log("SOAP Response:", data); 
             
                     try {
                         // Convert response to XML document
