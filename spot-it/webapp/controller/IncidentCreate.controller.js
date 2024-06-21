@@ -434,8 +434,13 @@ function (Controller,MessageBox) {
             
                         var incidentNumber = data.all[3].children[1].innerHTML
                         if (incidentNumber) {
-                            MessageBox.success("Incident Number: " + incidentNumber);
-                        } else {
+                            MessageBox.success("Incident Number: " + incidentNumber, {
+                                onClose: function() {
+                                   
+                                    window.location.reload();
+                                }
+                            });
+                        }  else {
                             MessageBox.error("Incident number not found in the response.");
                         }
                     } catch (error) {
