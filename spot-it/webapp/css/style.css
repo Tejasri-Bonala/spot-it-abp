@@ -7,7 +7,7 @@
     margin-left:13.5%;
 }
 
-.sapMPanelContent:not(.sapMPanelBGTransparent) {
+/* .sapMPanelContent:not(.sapMPanelBGTransparent) {
     border-bottom: .0625rem solid #1C2228;
 }
 
@@ -19,7 +19,7 @@
     background-color: #1C2228;
     filter: none;
     background-image: none;
-}
+} */
 .checkbox-container {
     display: flex;
     flex-wrap: wrap; /* This allows wrapping on smaller screens */
