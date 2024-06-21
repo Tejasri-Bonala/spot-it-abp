@@ -354,6 +354,9 @@ function (Controller,MessageBox) {
             
             // Collect form data
             var incidentType = oModel.getProperty("/incidentType") || ""; 
+
+            incidentType = incidentType.trim().charAt(0).toUpperCase();
+
             var classification = oModel.getProperty("/classification") || "";
             var compliance = this.complianceFormatter(
                 oModel.getProperty("/selectedSecurity"),
@@ -372,12 +375,6 @@ function (Controller,MessageBox) {
             var name = oModel.getProperty("/name") || "";
             var telephone = oModel.getProperty("/telephone") || "";
             var email = oModel.getProperty("/email") || "";
-        
-            // Validate that incidentType is not empty
-            if (!incidentType) {
-                MessageBox.error("Incident Type is required.");
-                return;
-            }
         
             // Convert dateTime to required format: YYYYMMDD HHMMSS
             function formatDateTime(dateTime) {
@@ -403,7 +400,7 @@ function (Controller,MessageBox) {
                             `<IV_DESCRIPTION xmlns="">${description}</IV_DESCRIPTION>` +
                             `<IV_IMA_DESC_TEXT xmlns="">${action}</IV_IMA_DESC_TEXT>` +
                             `<IV_INC_START_DATE xmlns="">${formattedDateTime}</IV_INC_START_DATE>` +
-                            `<IV_INC_TYPE xmlns="">I</IV_INC_TYPE>` +
+                            `<IV_INC_TYPE xmlns="">${incidentType}</IV_INC_TYPE>` +
                             `<IV_LATITUDE xmlns="">${decimalLat}</IV_LATITUDE>` +
                             `<IV_LOC_DESC_TEXT xmlns="">${location}</IV_LOC_DESC_TEXT>` +
                             `<IV_LONGITUDE xmlns="">${decimalLong}</IV_LONGITUDE>` +
