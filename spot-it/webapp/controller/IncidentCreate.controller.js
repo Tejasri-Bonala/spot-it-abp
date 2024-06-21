@@ -409,7 +409,7 @@ function (Controller,MessageBox) {
                             `<IV_SUB_EMAIL xmlns="">${email}</IV_SUB_EMAIL>` +
                             `<IV_SUB_NAME xmlns="">${name}</IV_SUB_NAME>` +
                             `<IV_SUB_TEL xmlns="">${telephone}</IV_SUB_TEL>` +
-                            `<IV_TITLE xmlns="">Test 4 CR ITSD-64709</IV_TITLE>` +
+                            `<IV_TITLE xmlns="">${title}</IV_TITLE>` +
                         '</ZCTCFM_INC_CREATE>' +
                     '</soap:Body>' +
                 '</soap:Envelope>'
