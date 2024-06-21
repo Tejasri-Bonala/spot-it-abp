@@ -348,10 +348,7 @@ function (Controller,MessageBox) {
         //         });
                 
         // },
-        getBaseURL: function () {
-            return sap.ui.require.toUrl("com/abp/spotit");
-        },
-
+       
         onSubmit: function () {
             var oModel = this.getView().getModel();
             
@@ -402,23 +399,23 @@ function (Controller,MessageBox) {
                    '<soap:Header/>' +
                     '<soap:Body>' +
                     '<ZCTCFM_INC_CREATE xmlns="urn:sap-com:document:sap:rfc:functions" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">' +
-                            `<IV_CMP_FUNC_SE>X</IV_CMP_FUNC_SE>` +
-                            `<IV_DESCRIPTION>${description}</IV_DESCRIPTION>` +
-                            `<IV_IMA_DESC_TEXT>${action}</IV_IMA_DESC_TEXT>` +
-                            `<IV_INC_START_DATE>${formattedDateTime}</IV_INC_START_DATE>` +
-                            `<IV_INC_TYPE>X</IV_INC_TYPE>` +
-                            `<IV_LATITUDE>${decimalLat}</IV_LATITUDE>` +
-                            `<IV_LOC_DESC_TEXT>${location}</IV_LOC_DESC_TEXT>` +
-                            `<IV_LONGITUDE>${decimalLong}</IV_LONGITUDE>` +
-                            `<IV_OBS_GROUP></IV_OBS_GROUP>` +
-                            `<IV_PLANT>${port}</IV_PLANT>` +  
-                            `<IV_SUB_EMAIL>${email}</IV_SUB_EMAIL>` +
-                            `<IV_SUB_NAME>${name}</IV_SUB_NAME>` +
-                            `<IV_SUB_TEL>${telephone}</IV_SUB_TEL>` +
-                            `<IV_TITLE>Test 4 CR ITSD-64709</IV_TITLE>` +
+                            `<IV_CMP_FUNC_SE xmlns="">X</IV_CMP_FUNC_SE>` +
+                            `<IV_DESCRIPTION xmlns="">${description}</IV_DESCRIPTION>` +
+                            `<IV_IMA_DESC_TEXT xmlns="">${action}</IV_IMA_DESC_TEXT>` +
+                            `<IV_INC_START_DATE xmlns="">${formattedDateTime}</IV_INC_START_DATE>` +
+                            `<IV_INC_TYPE xmlns="">I</IV_INC_TYPE>` +
+                            `<IV_LATITUDE xmlns="">${decimalLat}</IV_LATITUDE>` +
+                            `<IV_LOC_DESC_TEXT xmlns="">${location}</IV_LOC_DESC_TEXT>` +
+                            `<IV_LONGITUDE xmlns="">${decimalLong}</IV_LONGITUDE>` +
+                            `<IV_OBS_GROUP xmlns=""></IV_OBS_GROUP>` +
+                            `<IV_PLANT xmlns="">${port}</IV_PLANT>` +  
+                            `<IV_SUB_EMAIL xmlns="">${email}</IV_SUB_EMAIL>` +
+                            `<IV_SUB_NAME xmlns="">${name}</IV_SUB_NAME>` +
+                            `<IV_SUB_TEL xmlns="">${telephone}</IV_SUB_TEL>` +
+                            `<IV_TITLE xmlns="">Test 4 CR ITSD-64709</IV_TITLE>` +
                         '</ZCTCFM_INC_CREATE>' +
                     '</soap:Body>' +
-                '</soap:Envelope>';
+                '</soap:Envelope>'
         
             // Send the AJAX request
             $.ajax({
@@ -450,7 +447,11 @@ function (Controller,MessageBox) {
                     MessageBox.error("Error in the request: " + errorText);
                 },
             });
-        }
+        },
+        getBaseURL: function () {
+            return sap.ui.require.toUrl("com/abp/spotit");
+        },
+
         
         
         
